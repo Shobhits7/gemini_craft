@@ -22,7 +22,7 @@ RSpec.configure do |config|
   end
 
   # Reset GeminiCraft configuration before each test
-  config.before(:each) do
+  config.before do
     GeminiCraft.reset_configuration
   end
 end

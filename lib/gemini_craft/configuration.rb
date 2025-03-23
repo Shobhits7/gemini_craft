@@ -7,7 +7,7 @@ module GeminiCraft
 
     # Initialize a new configuration with default values
     def initialize
-      @api_key = ENV["GEMINI_API_KEY"]
+      @api_key = ENV.fetch("GEMINI_API_KEY", nil)
       @api_base_url = "https://generativelanguage.googleapis.com/v1beta"
       @model = "gemini-2.0-flash"
       @timeout = 30

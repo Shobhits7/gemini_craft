@@ -4,18 +4,18 @@ require "spec_helper"
 
 RSpec.describe GeminiCraft do
   it "has a version number" do
-    expect(GeminiCraft::VERSION).not_to be nil
+    expect(GeminiCraft::VERSION).not_to be_nil
   end
 
   describe ".configure" do
     it "yields configuration to the block" do
-      GeminiCraft.configure do |config|
+      described_class.configure do |config|
         config.api_key = "test-key"
         config.model = "test-model"
       end
 
-      expect(GeminiCraft.configuration.api_key).to eq("test-key")
-      expect(GeminiCraft.configuration.model).to eq("test-model")
+      expect(described_class.configuration.api_key).to eq("test-key")
+      expect(described_class.configuration.model).to eq("test-model")
     end
   end
 
@@ -28,7 +28,7 @@ RSpec.describe GeminiCraft do
     end
 
     it "delegates to client.generate_content" do
-      expect(GeminiCraft.generate_content("Hello", "System instruction", { option: "value" }))
+      expect(described_class.generate_content("Hello", "System instruction", { option: "value" }))
         .to eq("Generated content")
 
       expect(client_instance).to have_received(:generate_content)

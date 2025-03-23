@@ -54,3 +54,31 @@ RSpec/MultipleExpectations:
 
 RSpec/NestedGroups:
   Max: 4
+
+# Disable line length check for gemspec
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - 'gemini_craft.gemspec'
+    - 'spec/**/*'
+
+# Disable development dependencies check in gemspec
+Gemspec/DevelopmentDependencies:
+  Enabled: false
+
+# Disable spec file path format checks
+RSpec/FilePath:
+  Exclude:
+    - 'spec/gemini_craft.rb/**/*'
+
+RSpec/SpecFilePathFormat:
+  Exclude:
+    - 'spec/gemini_craft.rb/**/*'
+
+# Disable specific FactoryBot and Capybara cops that are causing errors
+FactoryBot/CreateList:
+  Enabled: false
+
+Capybara/RSpec/PredicateMatcher:
+  Enabled: false
+  

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable RSpec/MultipleExpectations
+
 require "spec_helper"
 
 RSpec.describe GeminiCraft::Configuration do
@@ -10,7 +12,7 @@ RSpec.describe GeminiCraft::Configuration do
       expect(configuration.api_base_url).to eq("https://generativelanguage.googleapis.com/v1beta")
       expect(configuration.model).to eq("gemini-2.0-flash")
       expect(configuration.timeout).to eq(30)
-      expect(configuration.cache_enabled).to eq(false)
+      expect(configuration.cache_enabled).to be(false)
       expect(configuration.cache_ttl).to eq(3600)
       expect(configuration.max_retries).to eq(3)
     end
@@ -40,3 +42,5 @@ RSpec.describe GeminiCraft::Configuration do
     end
   end
 end
+
+# rubocop:enable RSpec/MultipleExpectations

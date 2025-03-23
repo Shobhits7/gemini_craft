@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'gemini_craft'
+require "gemini_craft"
 
 # Configure with your Gemini API key
 GeminiCraft.configure do |config|
