@@ -1,5 +1,13 @@
 # frozen_string_literal: true
 
+require "bundler/setup"
+require "simplecov"
+require "webmock/rspec"
+
+SimpleCov.start do
+  add_filter "/spec/"
+end
+
 require "gemini_craft"
 
 RSpec.configure do |config|
@@ -11,5 +19,10 @@ RSpec.configure do |config|
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
+  end
+
+  # Reset GeminiCraft configuration before each test
+  config.before(:each) do
+    GeminiCraft.reset_configuration
   end
 end

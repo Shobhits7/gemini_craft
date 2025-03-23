@@ -1,8 +1,56 @@
+require:
+  - rubocop-rspec
+  - rubocop-performance
+
 AllCops:
-  TargetRubyVersion: 3.1
+  TargetRubyVersion: 2.6
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'tmp/**/*'
+    - 'spec/fixtures/**/*'
 
 Style/StringLiterals:
+  Enabled: true
   EnforcedStyle: double_quotes
 
 Style/StringLiteralsInInterpolation:
+  Enabled: true
   EnforcedStyle: double_quotes
+
+Style/Documentation:
+  Enabled: true
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'gemini_craft.gemspec'
+
+Metrics/MethodLength:
+  Max: 25
+
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Naming/FileName:
+  Exclude:
+    - 'lib/gemini_craft.rb'
+
+RSpec/ExampleLength:
+  Max: 15
+
+RSpec/MultipleExpectations:
+  Max: 5
+
+RSpec/NestedGroups:
+  Max: 4
