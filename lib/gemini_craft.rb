@@ -1,16 +1,9 @@
 # frozen_string_literal: true
 
 require_relative "gemini_craft/version"
-
-module GeminiCraft
-  class Error < StandardError; end
-  # Your code goes here...
-end
-# frozen_string_literal: true
-
+require_relative "gemini_craft/error"
 require_relative "gemini_craft/configuration"
 require_relative "gemini_craft/client"
-require_relative "gemini_craft/error"
 require_relative "gemini_craft/cache"
 
 # GeminiCraft is a Ruby gem for generating content using Google's Gemini AI
