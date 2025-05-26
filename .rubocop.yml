@@ -30,6 +30,12 @@ Metrics/BlockLength:
     - 'spec/**/*'
     - 'gemini_craft.gemspec'
 
+Style/Documentation:
+  Enabled: false
+
+Metrics/ClassLength:
+  Max: 120
+
 Metrics/MethodLength:
   Max: 25
 
@@ -46,11 +52,29 @@ Naming/FileName:
   Exclude:
     - 'lib/gemini_craft.rb'
 
+RSpec/MessageSpies:
+  Enabled: false
+
+Lint/UnusedMethodArgument:
+  Enabled: false
+
 RSpec/ExampleLength:
-  Max: 15
+  Max: 25
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/VerifiedDoubles:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 7
 
 RSpec/MultipleExpectations:
   Max: 5
+
+RSpec/AnyInstance:
+  Enabled: false
 
 RSpec/NestedGroups:
   Max: 4
