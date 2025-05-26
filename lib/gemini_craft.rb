@@ -23,6 +23,8 @@ module GeminiCraft
     #     config.api_key = "your-api-key"
     #     config.model = "gemini-2.0-flash"
     #     config.cache_enabled = true
+    #     config.streaming_enabled = true
+    #     config.logger = Rails.logger
     #   end
     # @yield [config] The configuration object
     def configure
@@ -39,14 +41,45 @@ module GeminiCraft
     # @param text [String] The text prompt to send to Gemini
     # @param system_instruction [String, nil] Optional system instruction to guide the model
     # @param options [Hash] Additional options for the request
-    # @return [String] The generated content
-    def generate_content(text, system_instruction = nil, options = {})
-      client.generate_content(text, system_instruction, options)
+    # @param stream [Boolean] Whether to stream the response
+    # @return [String, Enumerator] The generated content or stream enumerator
+    def generate_content(text, system_instruction = nil, options = {}, stream: false)
+      client.generate_content(text, system_instruction, options, stream: stream)
+    end
+
+    # Generate content with function calling support
+    # @param text [String] The text prompt
+    # @param functions [Array<Hash>] Available functions for the model to call
+    # @param system_instruction [String, nil] Optional system instruction
+    # @param options [Hash] Additional options
+    # @return [Hash] Response including function calls if any
+    def generate_with_functions(text, functions, system_instruction = nil, options = {})
+      client.generate_with_functions(text, functions, system_instruction, options)
+    end
+
+    # Generate streaming content
+    # @param text [String] The text prompt to send to Gemini
+    # @param system_instruction [String, nil] Optional system instruction
+    # @param options [Hash] Additional options
+    # @return [Enumerator] Stream enumerator
+    def stream_content(text, system_instruction = nil, options = {})
+      generate_content(text, system_instruction, options, stream: true)
     end
 
     # Reset the configuration to defaults
     def reset_configuration
       @configuration = Configuration.new
+    end
+
+    # Get cache statistics
+    # @return [Hash] Cache statistics
+    def cache_stats
+      client.cache.stats
+    end
+
+    # Clear the cache
+    def clear_cache
+      client.cache.clear
     end
   end
 end
